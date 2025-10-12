@@ -1,0 +1,11 @@
+*.log
+*.pyc
+*.DS_Store
+prelim.ipynb
+*.m4a
+*.mp3
+bin/
+lib/
+include/
+share/
+pyvenv.cfg
