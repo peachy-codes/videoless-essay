@@ -1,6 +1,6 @@
 """
 Usage:
-    python3 --url <url> --output_filename <file_name> --save_video <flag> --save_audio <flag>
+    python3 --url <url>
 """
 
 
