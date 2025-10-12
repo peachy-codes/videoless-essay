@@ -10,7 +10,18 @@ Methodology: Rip YT, save mp3, transcribe with whisper(small), and using embeddi
 
 Usage:
 
+mac users
+
+python3 -m venv videoless-essay
+
+cd videoless-essay
+
+source bin/activate
+
 pip install -r requirements.txt
 
 python3 main.py -url fullYoutubeURL
 
+windows users
+
+idk lol
