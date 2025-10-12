@@ -20,7 +20,7 @@ source bin/activate
 
 pip install -r requirements.txt
 
-python3 main.py -url fullYoutubeURL
+python3 main.py --url fullYoutubeURL
 
 windows users
 
