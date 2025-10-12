@@ -26,12 +26,6 @@ def arguments_parser():
         help="Entire YouTube URL: https://www.youtube.come/watch?v=<VIDEO_ID>"
         )
     
-    p.add_argument(
-        "--output_filename",
-        type=str,
-        default="output.txt",
-        help="The output filename for the transcribed audio: <output_filename>.txt"
-    )
 
     return p.parse_args()
 
@@ -41,7 +35,6 @@ def arguments_parser():
 if __name__ == "__main__":
     args = arguments_parser()
     print(f"url: {args.url}")
-    print(f"output name: {args.output_filename}")
 
     URL = [args.url]
 
