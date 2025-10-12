@@ -10,4 +10,7 @@ Methodology: Rip YT, save mp3, transcribe with whisper(small), and using embeddi
 
 Usage:
 
+pip install -r requirements.txt
+
 python3 main.py -url fullYoutubeURL
+
