@@ -1,4 +1,5 @@
 yt-dlp
-pandas
 numpy
 openai-whisper
+textsplit
+sentence-transformers
