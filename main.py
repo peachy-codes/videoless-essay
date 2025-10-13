@@ -97,7 +97,7 @@ if __name__ == "__main__":
 
     output_text = "\n\n".join(wrapped_paragraphs)  # blank line between paragraphs
 
-    destination_file_title = f"No-Video Essay{info['title']} [{info['id']}"
+    destination_file_title = f"No-Video Essay {info['title']} [{info['id']}"
 
     Path(f"{destination_file_title}.txt").write_text(output_text, encoding="utf-8")
     print(f"Saved nicely formatted paragraphs to {destination_file_title}.txt")
