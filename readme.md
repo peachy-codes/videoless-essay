@@ -10,8 +10,6 @@ Methodology: Rip YT, save mp3, transcribe with whisper(small), and using embeddi
 
 Usage:
 
-mac users
-
 python3 -m venv videoless-essay
 
 cd videoless-essay
@@ -20,8 +18,26 @@ source bin/activate
 
 pip install -r requirements.txt
 
+
+If running videoless-essay/main.py
+
+from root directory:
+
 python3 main.py --url fullYoutubeURL
 
-windows users
 
-idk lol
+**Please note this will soon be deprecated**
+
+
+If running src/videoless_essay/main.py
+
+from root directory:
+
+export PYTHONPATH=src
+python3 -m videoless_essay.main --url fullYoutubeURL
+
+**Please note this will be the behavior in future versions**
+
+FUTURE INTENTIONS:
+
+Add screencaps from videos in appropriate sections
