@@ -47,7 +47,7 @@ def main() -> None:
 
     dest_path.write_text(essay, encoding="utf-8")
 
-    print(f"Saved essay to {dest_path}.txt")
+    print(f"Saved essay to {dest_path}")
 
 if __name__ == "__main__":
 
