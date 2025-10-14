@@ -16,6 +16,7 @@ from sentence_transformers import SentenceTransformer
 from textsplit.tools import SimpleSentenceTokenizer, get_penalty, get_segments
 from textsplit.algorithm import split_optimal
 import textwrap
+import os
 
 def arguments_parser():
     p = argparse.ArgumentParser()
@@ -39,6 +40,7 @@ if __name__ == "__main__":
     URL = [args.url]
 
     ydl_opts = {
+        'outtmpl': '%(id)s.%(ext)s',
         'format': 'm4a/bestaudio/best',
         # ℹ️ See help(yt_dlp.postprocessor) for a list of available Postprocessors and their arguments
         'postprocessors': [{  # Extract audio using ffmpeg
@@ -55,7 +57,7 @@ if __name__ == "__main__":
     #print(info)
     #print(f"Expected filename is: {info['title']} [{info['id']}].mp3")
 
-    audio_file = f"{info['title']} [{info['id']}].mp3"
+    audio_file = f"{info['id']}.mp3"
 
     model = whisper.load_model("small")  # pick "base", "small", "medium", "large" if desired
 
@@ -95,9 +97,16 @@ if __name__ == "__main__":
         wrapped = textwrap.fill(p, width=80)  # 80 chars per line is standard
         wrapped_paragraphs.append(wrapped)
 
+    header_text = info['title'] + "\n\n" + "by" +  "\n\n" + info['uploader'] # technically fstrings are more performant 
+
     output_text = "\n\n".join(wrapped_paragraphs)  # blank line between paragraphs
 
-    destination_file_title = f"No-Video Essay {info['title']} [{info['id']}"
+    output_text = header_text + "\n\n" + output_text # gross and should be cleaned up
+
+    destination_file_title = f"No-Video Essay {info['title']} [{info['id']}]"
 
     Path(f"{destination_file_title}.txt").write_text(output_text, encoding="utf-8")
     print(f"Saved nicely formatted paragraphs to {destination_file_title}.txt")
+
+    os.rename(audio_file, f"{info['uploader']} - {info['title']}.mp3")
+    print(f"Renamed .mp3 audio file to <artist> - <title>")
