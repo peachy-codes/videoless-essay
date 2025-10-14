@@ -1,43 +1,52 @@
-Video essays are too long
+Videoless Essay
 
-We want to read!
+Video essays are too long. We want to read them instead.
 
-This is an early version of this script.
+This project converts YouTube video essays into readable text by downloading the audio, transcribing it, and segmenting the result into structured paragraphs.
 
-Uses yt-dl, whisper, sentence transformers
+⸻
 
-Methodology: Rip YT, save mp3, transcribe with whisper(small), and using embeddings to segment into suspected paragraphs for easy reading
+Methodology
+	1.	Download audio from a YouTube URL
+	2.	Save it as an .mp3 file in data/audio/
+	3.	Transcribe the audio into text with whisper
+	4.	Segment the text into suspected paragraphs using embeddings
 
-Usage:
+⸻
+
+Setup
+
+Create and activate a virtual environment:
 
 python3 -m venv videoless-essay
-
 cd videoless-essay
-
 source bin/activate
+
+Install dependencies:
 
 pip install -r requirements.txt
 
 
-If running videoless-essay/main.py
+⸻
 
-from root directory:
+Usage
 
-python3 main.py --url fullYoutubeURL
-
-
-**Please note this will soon be deprecated**
-
-
-If running src/videoless_essay/main.py
-
-from root directory:
+From the root directory of the repository:
 
 export PYTHONPATH=src
-python3 -m videoless_essay.main --url fullYoutubeURL
+python3 -m videoless_essay.main --url FULL_YOUTUBE_URL
 
-**Please note this will be the behavior in future versions**
+This will:
+	•	Download the video’s audio
+	•	Save the transcription
+	•	Generate a text version of the video essay in data/text/
 
-FUTURE INTENTIONS:
+⸻
 
-Add screencaps from videos in appropriate sections
+Future Work
+	•	Add screencaps from the video in appropriate sections
+	•	Make the essay more nicely formatted
+	•	Possible browser UI
+    
+
+⸻
