@@ -1,52 +1,49 @@
-Videoless Essay
+# Videoless Essay
 
 Video essays are too long. We want to read them instead.
 
-This project converts YouTube video essays into readable text by downloading the audio, transcribing it, and segmenting the result into structured paragraphs.
+This is an early version of this script.
 
-⸻
+## Overview
 
-Methodology
-	1.	Download audio from a YouTube URL
-	2.	Save it as an .mp3 file in data/audio/
-	3.	Transcribe the audio into text with whisper
-	4.	Segment the text into suspected paragraphs using embeddings
+This project:
 
-⸻
+- Uses `yt-dlp` to download audio from a YouTube video.
+- Uses `whisper` (small model) to transcribe the audio.
+- Uses `sentence-transformers` to segment the transcript into suspected paragraphs for easier reading.
 
-Setup
+## Methodology
+
+1. Rip the YouTube audio.
+2. Save the `.mp3` file to `data/audio/`.
+3. Transcribe it with `whisper`.
+4. Use embeddings to segment the transcript into readable sections.
+
+## Setup
 
 Create and activate a virtual environment:
 
-python3 -m venv videoless-essay
-cd videoless-essay
-source bin/activate
+    python3 -m venv videoless-essay
+    cd videoless-essay
+    source bin/activate
 
 Install dependencies:
 
-pip install -r requirements.txt
+    pip install -r requirements.txt
 
+## Usage
 
-⸻
+From the root directory:
 
-Usage
-
-From the root directory of the repository:
-
-export PYTHONPATH=src
-python3 -m videoless_essay.main --url FULL_YOUTUBE_URL
+    export PYTHONPATH=src
+    python3 -m videoless_essay.main --url FULL_YOUTUBE_URL
 
 This will:
-	•	Download the video’s audio
-	•	Save the transcription
-	•	Generate a text version of the video essay in data/text/
 
-⸻
+- Download the video’s audio.
+- Save the transcription.
+- Generate a text version of the essay in `data/text/`.
 
-Future Work
-	•	Add screencaps from the video in appropriate sections
-	•	Make the essay more nicely formatted
-	•	Possible browser UI
-    
+## Future Work
 
-⸻
+- Add screencaps from videos in appropriate sections.
