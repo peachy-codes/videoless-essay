@@ -56,10 +56,10 @@ You can set the --screencaps flag to save screencaps of the video for each parag
 
 You can set the --html flag to save an html page with the screencaps embedded
 
-        python3 -m videoless_essay.main --url FULL_YOUTUBE_URL --html
+    python3 -m videoless_essay.main --url FULL_YOUTUBE_URL --screencaps --html
 
 
-Running --html without --screencaps will still create the html page, just witohut the images embedded.
+Running --html without --screencaps will still create the html page, just without the images embedded.
 
 ## Future Work
 
