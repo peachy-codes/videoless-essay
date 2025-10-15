@@ -58,8 +58,18 @@ You can set the --html flag to save an html page with the screencaps embedded
 
     python3 -m videoless_essay.main --url FULL_YOUTUBE_URL --screencaps --html
 
-
 Running --html without --screencaps will still create the html page, just without the images embedded.
+
+You can set the --pdf flag to save a pdf with optional screencaps embedding
+
+    python3 -m videoless_essay.main --url FULL_YOUTUBE_URL --pdf
+
+**Note: this will force the --html flag**
+
+You can set the --all flag to enable all possible flags
+
+    python3 -m videoless_essay.main --url FULL_YOUTUBE_URL --all
+
 
 ## Future Work
 
