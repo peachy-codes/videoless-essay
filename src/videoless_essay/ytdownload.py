@@ -81,7 +81,7 @@ def youtube_downloader(URL:list) -> tuple[Path, Path, Path]:
     record = {
         "id": info["id"],
         "title": info.get("title"),
-        "uploader": info.get("uploader"),
+        "uploader": info.get("uploader") or "Unkown Uploader",
         "channel_id": info.get("channel_id"),
         "duration": info.get("duration"),
         "upload_date": info.get("upload_date"),

@@ -17,10 +17,12 @@ text_dir = data_root / "text"
 transcribe_dir = data_root / "transcriptions"
 screencaps_root = data_root / "screencaps"
 html_dir = data_root / "html"
+pdf_dir = data_root / "pdf"
 text_dir.mkdir(parents=True, exist_ok=True)
 transcribe_dir.mkdir(parents=True, exist_ok=True)
 screencaps_root.mkdir(parents=True, exist_ok=True)
 html_dir.mkdir(parents=True, exist_ok=True)
+pdf_dir.mkdir(parents=True, exist_ok=True)
 
 def arguments_parser():
     p = argparse.ArgumentParser()
@@ -44,6 +46,18 @@ def arguments_parser():
         help="Outputs html file. Embeds screencaps if screencap flag is used."
     )
 
+    p.add_argument(
+    "--pdf",
+    action="store_true",
+    help="Also save the HTML output as a PDF file."
+    )
+
+    p.add_argument(
+    "--all",
+    action="store_true",
+    help="Enable all outputs: screencaps, HTML, and PDF."
+    )
+
     return p.parse_args()
 
 def sanitize_filename(name: str) -> str:
@@ -52,7 +66,11 @@ def sanitize_filename(name: str) -> str:
 
 def main() -> None:
     args = arguments_parser()
-
+    if args.all:
+        args.screencaps = True
+        args.html = True
+        args.pdf = True
+    
     audio_file, video_file_path, metadata_file = youtube_downloader([args.url])
 
     print(f"Audio saved to: {audio_file}")
@@ -104,6 +122,12 @@ def main() -> None:
             embed_images=bool(args.screencaps),
         )
         print(f"HTML saved to: {out_html}")
+
+        if args.pdf:
+            from weasyprint import HTML
+            pdf_path = pdf_dir / f"No-Video Essay {sanitize_filename(metadata['title'])} [{video_id}].pdf"
+            HTML(filename=str(out_html)).write_pdf(str(pdf_path))
+            print(f"PDF saved to: {pdf_path}")
     
 
     
