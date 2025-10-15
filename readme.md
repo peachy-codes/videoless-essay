@@ -12,6 +12,8 @@ This project:
 - Uses `whisper` (small model) to transcribe the audio.
 - Uses `sentence-transformers` to segment the transcript into suspected paragraphs for easier reading.
 - Uses `ffmpeg` for audio ripping and screenshots.
+- Uses `textsplit` for nice paragraphs.
+- Uses `weasyprint` for pdf writing.
 
 ## Methodology
 
