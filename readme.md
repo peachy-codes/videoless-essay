@@ -8,16 +8,20 @@ This is an early version of this script.
 
 This project:
 
-- Uses `yt-dlp` to download audio from a YouTube video.
+- Uses `yt-dlp` to download video from a YouTube video.
 - Uses `whisper` (small model) to transcribe the audio.
 - Uses `sentence-transformers` to segment the transcript into suspected paragraphs for easier reading.
+- Uses `ffmpeg` for audio ripping and screenshots.
 
 ## Methodology
 
-1. Rip the YouTube audio.
-2. Save the `.mp3` file to `data/audio/`.
+1. Rip the YouTube video.
+2. Rip the `.mp3` track from the video.
 3. Transcribe it with `whisper`.
 4. Use embeddings to segment the transcript into readable sections.
+5. Save paragraphs to .txt file.
+6. Optionally save screencaps at beginning of paragraphs if flag is set.
+7. Optionally save html of the transcription, with screencaps embedding if flag set.
 
 ## Setup
 
@@ -44,6 +48,19 @@ This will:
 - Save the transcription.
 - Generate a text version of the essay in `data/text/`.
 
+### Optional Parameters
+
+You can set the --screencaps flag to save screencaps of the video for each paragraph beginning
+    
+    python3 -m videoless_essay.main --url FULL_YOUTUBE_URL --screencaps
+
+You can set the --html flag to save an html page with the screencaps embedded
+
+        python3 -m videoless_essay.main --url FULL_YOUTUBE_URL --html
+
+
+Running --html without --screencaps will still create the html page, just witohut the images embedded.
+
 ## Future Work
 
-- Add screencaps from videos in appropriate sections.
+- Add semantic searching for lookup.
