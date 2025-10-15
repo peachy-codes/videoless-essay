@@ -10,3 +10,4 @@ include/
 share/
 pyvenv.cfg
 test_transcribe.txt
+private/
