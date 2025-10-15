@@ -66,6 +66,10 @@ def sanitize_filename(name: str) -> str:
 
 def main() -> None:
     args = arguments_parser()
+    
+    if args.pdf and not args.html:
+        args.html = True
+    
     if args.all:
         args.screencaps = True
         args.html = True
